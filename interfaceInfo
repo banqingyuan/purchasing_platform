@@ -1,0 +1,149 @@
+---
+说明:
+  XX: 参数名
+  XX*: 表示该参数必须有值
+  请求方式及参数: get直接写在URL后 post 传递JSON 字符串
+
+---
+profile: 所有人均可使用的API
+searchGoodsById: get
+  id*: 货品ID
+
+  result: 单个货品信息
+    goods:
+
+searchGoods: get 参数直接跟在URL后面 https:..../searchGoods?googsName=白菜?page=2
+  goodsName: 如果有值，就采用模糊搜索，如果为空，则搜索所有
+  page: 如果有值，则跳转至相应的搜索页数，否则为第一页
+
+  result: list集合
+    goods:
+
+searchOrderById: get 订单不包含的具体的货品信息
+  id*: 订单ID
+
+  result: 单个订单信息
+    order:
+
+searchOrderAllInfoById: get 订单包含的具体的货品信息
+  id*: 订单ID
+
+  result: 单个订单信息
+    order:
+
+
+searchOrder: get
+  state: 可取值为completed（已完成）,outstanding（未完成）,delivering（配送中），为其他值时为查询所有订单
+  page:
+  result: list集合
+   order:
+
+updateOrder: get 采购员和供应商签收或者发货时都调用这个API更新订单状态，只需给出订单id即可，后台自动处理如何订单修改状态
+  id*: 订单编号
+
+
+  result:
+    bool: true 修改成功，false 修改失败
+---
+profile: 仅供采购员（buyer）使用
+buyerLogin: post
+  email*: 注册时使用的邮箱
+  password*: 密码
+
+  result: true false
+
+buyerRegister: post
+  name*: 姓名
+  password*: 密码
+  department*: 部门
+  address*: 地址
+  email*: 邮箱
+
+  result: true false
+
+creatOrder: 参数示例{"expect":"2019-12-04 19:08:29","goodsMap":{1:10,2:25,9:10,10:20}}/*{id:weight}*/
+  Map<id,weight>:
+  expect: 期望送达的时间 格式 yyyy-MM-dd HH:mm:ss
+
+
+
+---
+profile: 仅供供应商使用
+supplierLogin: post 参数同buyerLogin
+suplierRegister: psot 参数同buyerRegister
+
+addGoods: post
+  name*:
+
+  price*:
+
+  inventory*: 库存
+
+  simpledescribe*: 简单描述，别太长，
+
+  picture: 待定吧，还没准备加
+
+updateGoods: post goods其他属性均为可选项
+
+  id*: 货品的ID
+
+  result: true false
+
+searchGoodsOfSupplier:
+
+  result: list集合
+    goods:
+---
+profile: json对象
+
+buyer:
+  id:
+
+  name:
+
+  password:
+
+  department:
+
+  address:
+
+  lastLogin:
+
+  email:
+
+supplier: 和buyer一样
+
+goods:
+  id:
+
+  supplier: 供应商信息
+
+  name:
+
+  price:
+
+  inventory:
+
+  picture:
+
+  describe:
+
+order:
+  id:
+
+  buyer: 采购员信息
+
+  supplier: 供应商信息
+
+  state: 订单状态
+
+  amount: 总额
+
+  begin: 订单创建时间
+
+  end: 订单完成时间
+
+  expect: 期望送达时间
+
+
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\Maven\localRepository\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar"/>
+
+
+    <context id="mysqlgenerator" targetRuntime="MyBatis3">
+        <!--不生成注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/dev?serverTimezone=GMT"
+                        userId="root"
+                        password="kong8284"/>
+
+        <!-- 指定javaBean生成的位置 -->
+        <javaModelGenerator targetPackage="kb.javaproject.purchasingplatform.domain" targetProject="src/main/java">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--指定sql映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="kb.javaproject.purchasingplatform.mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 指定dao接口生成的位置，mapper接口 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="kb.javaproject.purchasingplatform.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- table表生成对应的DomainObject -->
+        <!--<table tableName="student" domainObjectName="Student"/>-->
+        <!--<table tableName="buyer" domainObjectName="Buyer"/>-->
+        <!--<table tableName="supplier" domainObjectName="Supplier"/>-->
+        <!--<table tableName="goods" domainObjectName="Goods"/>-->
+        <table tableName="orderinfo" domainObjectName="Order"/>
+
+    </context>
+
+</generatorConfiguration>

@@ -1,0 +1,78 @@
+spring:
+  profiles:
+    active: bqy
+logging:
+  config: classpath:config/logback.xml
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: zws3185960
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    initial-size: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 6000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+server:
+  port: 9080
+
+---
+spring:
+  profiles: bqy
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: zws3185960
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    initial-size: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 6000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+server:
+  port: 8866
+
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/javaproject?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: kong8284
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    initial-size: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 6000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+  server:
+    port: 9980

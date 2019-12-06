@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kb.javaproject.purchasingplatform.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="kb.javaproject.purchasingplatform.domain.Order">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="buyerID" jdbcType="INTEGER" property="buyerid"/>
+        <result column="suplierID" jdbcType="INTEGER" property="suplierid"/>
+        <result column="state" jdbcType="VARCHAR" property="state"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="begin" jdbcType="TIMESTAMP" property="begin"/>
+        <result column="end" jdbcType="TIMESTAMP" property="end"/>
+        <result column="expect" jdbcType="TIMESTAMP" property="expect"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, buyerID, suplierID, state, amount, begin, end, expect
+  </sql>
+    <select id="selectByExample" parameterType="kb.javaproject.purchasingplatform.domain.OrderExample"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from orderinfo
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orderinfo
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="kb.javaproject.purchasingplatform.domain.OrderExample">
+        delete from orderinfo
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="kb.javaproject.purchasingplatform.domain.Order" useGeneratedKeys="true" keyProperty="id">
+    insert into orderinfo (id, buyerID, suplierID, 
+      state, amount, begin, 
+      end, expect)
+    values (#{id,jdbcType=INTEGER}, #{buyerid,jdbcType=INTEGER}, #{suplierid,jdbcType=INTEGER}, 
+      #{state,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{begin,jdbcType=TIMESTAMP}, 
+      #{end,jdbcType=TIMESTAMP}, #{expect,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="kb.javaproject.purchasingplatform.domain.Order">
+        insert into orderinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="buyerid != null">
+                buyerID,
+            </if>
+            <if test="suplierid != null">
+                suplierID,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="begin != null">
+                begin,
+            </if>
+            <if test="end != null">
+                end,
+            </if>
+            <if test="expect != null">
+                expect,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="buyerid != null">
+                #{buyerid,jdbcType=INTEGER},
+            </if>
+            <if test="suplierid != null">
+                #{suplierid,jdbcType=INTEGER},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="begin != null">
+                #{begin,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end != null">
+                #{end,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expect != null">
+                #{expect,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <insert id="insertOrderGoods" parameterType="list" useGeneratedKeys="true" keyProperty="id">
+        INSERT into ordergoods (orderid,goodsid,weight) VALUES
+        <foreach collection="list" item="item" separator="," >
+            (#{item.orderid},#{item.goodsid},#{item.weight})
+        </foreach>
+    </insert>
+    <insert id="insertOrders" parameterType="list" useGeneratedKeys="true" keyProperty="id">
+        insert into orderinfo( buyerID, suplierID,
+      state, amount, begin,
+      end, expect) values
+      <foreach collection="list" separator="," item="order">
+          (#{order.buyerid},#{order.suplierid},#{order.state},#{order.amount},
+          #{order.begin},#{order.end},#{order.expect})
+      </foreach>
+    </insert>
+    <select id="countByExample" parameterType="kb.javaproject.purchasingplatform.domain.OrderExample"
+            resultType="java.lang.Long">
+        select count(*) from orderinfo
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <select id="selectGoodsOfOrder" resultType="kb.javaproject.purchasingplatform.domain.Goods">
+SELECT
+goods.id as id,
+	supplierID,
+	name,
+	price,
+	simpledescribe,
+	picture,
+  goodslist.weight  inventory
+FROM
+	goods
+INNER JOIN (SELECT goodsid,weight FROM ordergoods WHERE orderid=#{orderid})as goodslist on goods.id= goodslist.goodsid
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update orderinfo
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.buyerid != null">
+                buyerID = #{record.buyerid,jdbcType=INTEGER},
+            </if>
+            <if test="record.suplierid != null">
+                suplierID = #{record.suplierid,jdbcType=INTEGER},
+            </if>
+            <if test="record.state != null">
+                state = #{record.state,jdbcType=VARCHAR},
+            </if>
+            <if test="record.amount != null">
+                amount = #{record.amount,jdbcType=DECIMAL},
+            </if>
+            <if test="record.begin != null">
+                begin = #{record.begin,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.end != null">
+                end = #{record.end,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.expect != null">
+                expect = #{record.expect,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update orderinfo
+        set id = #{record.id,jdbcType=INTEGER},
+        buyerID = #{record.buyerid,jdbcType=INTEGER},
+        suplierID = #{record.suplierid,jdbcType=INTEGER},
+        state = #{record.state,jdbcType=VARCHAR},
+        amount = #{record.amount,jdbcType=DECIMAL},
+        begin = #{record.begin,jdbcType=TIMESTAMP},
+        end = #{record.end,jdbcType=TIMESTAMP},
+        expect = #{record.expect,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="kb.javaproject.purchasingplatform.domain.Order">
+        update orderinfo
+        <set>
+            <if test="buyerid != null">
+                buyerID = #{buyerid,jdbcType=INTEGER},
+            </if>
+            <if test="suplierid != null">
+                suplierID = #{suplierid,jdbcType=INTEGER},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="begin != null">
+                begin = #{begin,jdbcType=TIMESTAMP},
+            </if>
+            <if test="end != null">
+                end = #{end,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expect != null">
+                expect = #{expect,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="kb.javaproject.purchasingplatform.domain.Order">
+    update orderinfo
+    set buyerID = #{buyerid,jdbcType=INTEGER},
+      suplierID = #{suplierid,jdbcType=INTEGER},
+      state = #{state,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      begin = #{begin,jdbcType=TIMESTAMP},
+      end = #{end,jdbcType=TIMESTAMP},
+      expect = #{expect,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateOrdersAmount" parameterType="list">
+        UPDATE orderinfo SET amount=(
+
+        <foreach collection="list" item="order" open="CASE id" close="END">
+            when #{order.id} then #{order.amount}
+        </foreach>
+        )
+        where id in
+        <foreach collection="list" item="order" open="(" close=")" separator=",">
+            #{order.id}
+        </foreach>
+    </update>
+
+</mapper>
