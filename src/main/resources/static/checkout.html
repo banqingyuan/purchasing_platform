@@ -294,7 +294,7 @@
 			<!-- //tittle heading -->
 			<div class="checkout-right">
 				<h4>您的订单包括
-					<span>3 个产品</span>
+					<span id="number_of_goods"></span>
 				</h4>
 				<div class="table-responsive">
 					<table class="timetable_sub">
@@ -306,88 +306,10 @@
 								<th>食材名称</th>
 
 								<th>价格</th>
-								<th>删除</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="rem1">
-								<td class="invert">1</td>
-								<td class="invert-image">
-									<a href="single2.html">
-										<img src="images/a7.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">牛肉，50kg</td>
-								<td class="invert">￥888.00</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close1"> </div>
-									</div>
-								</td>
-							</tr>
-							<tr class="rem2">
-								<td class="invert">2</td>
-								<td class="invert-image">
-									<a href="single2.html">
-										<img src="images/s6.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">羊肉, 80kg</td>
-								<td class="invert">￥121.60</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close2"> </div>
-									</div>
-								</td>
-							</tr>
-							<tr class="rem3">
-								<td class="invert">3</td>
-								<td class="invert-image">
-									<a href="single.html">
-										<img src="images/s5.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">猪肉，100kg</td>
-								<td class="invert">￥180.00</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close3"> </div>
-									</div>
-								</td>
-							</tr>
+						<tbody id="order_tbody">
+
 						</tbody>
 					</table>
 				</div>
@@ -569,11 +491,11 @@
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
 				event.preventDefault();
-
 				$('html,body').animate({
 					scrollTop: $(this.hash).offset().top
 				}, 1000);
 			});
+			find_Out_Count();
 		});
 	</script>
 	<!-- //end-smooth-scrolling -->
@@ -596,7 +518,7 @@
 		});
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
-
+	<script src="js/checkout.js"></script>
 	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->

@@ -8,6 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
 	<script>
+
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
 		}, false);
@@ -49,11 +50,6 @@
 				</h1>
 			</div>
 			<button id="test" onClick="JavaScript:test()"></button>
-			<script>
-				function test(){
-					
-				}
-			</script>
 			<!-- header-bot -->
 			<div class="col-md-8 header">
 				<!-- header lists -->
@@ -316,9 +312,13 @@
 						<span class="fa fa-envelope-o" aria-hidden="true"></span>
 					</div>
 					<div class="modal_body_left modal_body_left1">
-						<ul id="buyer_info">
+						<h3 class="agileinfo_sign">采购订单管理</h3>
+						<p>
+							点击确认订单（黄色表示未发货，蓝色表示运送中，绿色表示已发货）
+						</p>
+						<div class="list-group" id="buyer_info">
 
-						</ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -339,9 +339,9 @@
 						<span class="fa fa-envelope-o" aria-hidden="true"></span>
 					</div>
 					<div class="modal_body_left modal_body_left1">
-						<ul id="supplier_info">
+						<div class="list-group" id="supplier_info">
 
-						</ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -554,35 +554,35 @@
 				<div class="wrapper">
 					<!-- first section (nuts) -->
 					<div class="product-sec1">
-						<h3 class="heading-tittle">肉类</h3>
+						<h3 class="heading-tittle" id="Goods_list_1">肉类</h3>
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/m1.jpg" alt="">
+									<img id="img_1" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">浏览详情</a>
 										</div>
 									</div>
-									<span class="product-new-top">New</span>
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">猪肉, 500g</a>
+										<a href="single.html" id="out_name_1"></a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">￥149.00</span>
-										<del>￥280.00</del>
+										<span class="item_price" id="out_price_1"></span>
+										<del >￥400.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="猪肉, 500g" />
-												<input type="hidden" name="amount" value="149.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
+												<input type="hidden" name="business" value="" />
+												<input type="hidden" id="item_id_1" name="item_id" value="" />
+												<input type="hidden"  id="in_name_1" name="item_name" value="" />
+												<input type="hidden"  id="in_price_1" name="amount" value="" />
+												<input type="hidden" id="good_id_1" name="discount_amount" value="1.00" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />
 												<input type="hidden" name="cancel_return" value=" " />
@@ -597,22 +597,20 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/m2.jpg" alt="">
+									<img id="img_2" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">浏览详情</a>
 										</div>
 									</div>
-									<span class="product-new-top">New</span>
-
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">牛肉, 500g</a>
+										<a href="single.html" id="out_name_2"></a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$200.00</span>
-										<del>￥420.00</del>
+										<span class="item_price" id="out_price_2"></span>
+										<del >￥400.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
@@ -620,9 +618,10 @@
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
 												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="牛肉, 500g" />
-												<input type="hidden" name="amount" value="200.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
+												<input type="hidden" id="item_id_2" name="item_id" value="" />
+												<input type="hidden"  id="in_name_2" name="item_name" value="" />
+												<input type="hidden"  id="in_price_2" name="amount" value="" />
+												<input type="hidden" id="good_id_2" name="discount_amount" value="1.00" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />
 												<input type="hidden" name="cancel_return" value=" " />
@@ -637,22 +636,20 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/m3.jpg" alt="">
+									<img id="img_3" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">浏览详情</a>
 										</div>
 									</div>
-									<span class="product-new-top">New</span>
-
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">羊肉, 500g</a>
+										<a href="single.html" id="out_name_3"></a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">￥500</span>
-										<del>￥600.99</del>
+										<span class="item_price" id="out_price_3"></span>
+										<del >￥400.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
@@ -660,9 +657,10 @@
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
 												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="羊肉, 500g" />
-												<input type="hidden" name="amount" value="520.99" />
-												<input type="hidden" name="discount_amount" value="1.00" />
+												<input type="hidden"  id="in_name_3" name="item_name" value="" />
+												<input type="hidden" id="item_id_3" name="item_id" value="" />
+												<input type="hidden"  id="in_price_3" name="amount" value="" />
+												<input type="hidden" id="good_id_3" name="discount_amount" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />
 												<input type="hidden" name="cancel_return" value=" " />
@@ -670,7 +668,6 @@
 											</fieldset>
 										</form>
 									</div>
-
 								</div>
 							</div>
 						</div>
@@ -696,21 +693,20 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/mk4.jpg" alt="">
+									<img id="img_4" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">浏览详情</a>
 										</div>
 									</div>
-									<span class="product-new-top">New</span>
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">花生油, 1L</a>
+										<a href="single.html" id="out_name_4"></a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">￥78.00</span>
-										<del>￥110.00</del>
+										<span class="item_price" id="out_price_4"></span>
+										<del >￥400.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
@@ -718,9 +714,10 @@
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
 												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="花生油, 1L" />
-												<input type="hidden" name="amount" value="78.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
+												<input type="hidden"  id="in_name_4" name="item_name" value="" />
+												<input type="hidden"  id="in_price_4" name="amount" value="" />
+												<input type="hidden" id="good_id_4" name="discount_amount" value="" />
+												<input type="hidden" id="item_id_4" name="item_id" value="" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />
 												<input type="hidden" name="cancel_return" value=" " />
@@ -733,85 +730,83 @@
 							</div>
 						</div>
 						<div class="col-md-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/mk5.jpg" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">浏览详情</a>
-										</div>
+						<div class="men-pro-item simpleCart_shelfItem">
+							<div class="men-thumb-item">
+								<img id="img_5" alt="">
+								<div class="men-cart-pro">
+									<div class="inner-men-cart-pro">
+										<a href="single.html" class="link-product-add-cart">浏览详情</a>
 									</div>
-									<span class="product-new-top">New</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.html">橄榄油, 1L</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">￥130.00</span>
-										<del>￥150.00</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="橄榄油, 1L" />
-												<input type="hidden" name="amount" value="130.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="添加至采购单" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
 								</div>
 							</div>
+							<div class="item-info-product ">
+								<h4>
+									<a href="single.html" id="out_name_5"></a>
+								</h4>
+								<div class="info-product-price">
+									<span class="item_price" id="out_price_5"></span>
+									<del >￥400.00</del>
+								</div>
+								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<form action="#" method="post">
+										<fieldset>
+											<input type="hidden" name="cmd" value="_cart" />
+											<input type="hidden" name="add" value="1" />
+											<input type="hidden" name="business" value=" " />
+											<input type="hidden"  id="in_name_5" name="item_name" value="" />
+											<input type="hidden"  id="in_price_5" name="amount" value="" />
+											<input type="hidden" id="item_id_5" name="item_id" value="" />
+											<input type="hidden" name="discount_amount" value="" />
+											<input type="hidden" name="currency_code" value="USD" />
+											<input type="hidden" name="return" value=" " />
+											<input type="hidden" name="cancel_return" value=" " />
+											<input type="submit" name="submit" value="添加至采购单" class="button" />
+										</fieldset>
+									</form>
+								</div>
+
+							</div>
 						</div>
+					</div>
 						<div class="col-md-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/mk6.jpg" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">浏览详情</a>
-										</div>
+						<div class="men-pro-item simpleCart_shelfItem">
+							<div class="men-thumb-item">
+								<img id="img_6" alt="">
+								<div class="men-cart-pro">
+									<div class="inner-men-cart-pro">
+										<a href="single.html" class="link-product-add-cart">浏览详情</a>
 									</div>
-									<span class="product-new-top">New</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.html">菜籽油, 5L</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">￥399.99</span>
-										<del>￥500.00</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="菜籽油, 5L" />
-												<input type="hidden" name="amount" value="399.99" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="添加至采购单" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
 								</div>
 							</div>
+							<div class="item-info-product ">
+								<h4>
+									<a href="single.html" id="out_name_6"></a>
+								</h4>
+								<div class="info-product-price">
+									<span class="item_price" id="out_price_6"></span>
+									<del >￥400.00</del>
+								</div>
+								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<form action="#" method="post">
+										<fieldset>
+											<input type="hidden" name="cmd" value="_cart" />
+											<input type="hidden" name="add" value="1" />
+											<input type="hidden" name="business" value=" " />
+											<input type="hidden"  id="in_name_6" name="item_name" value="" />
+											<input type="hidden"  id="in_price_6" name="amount" value="" />
+											<input type="hidden" id="item_id_6" name="item_id" value="" />
+											<input type="hidden" id="good_id_6" name="discount_amount" value="" />
+											<input type="hidden" name="currency_code" value="USD" />
+											<input type="hidden" name="return" value=" " />
+											<input type="hidden" name="cancel_return" value=" " />
+											<input type="submit" name="submit" value="添加至采购单" class="button" />
+										</fieldset>
+									</form>
+								</div>
+
+							</div>
 						</div>
+					</div>
 						<div class="clearfix"></div>
 					</div>
 					<!-- //third section (oils) -->
@@ -821,7 +816,7 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/mk7.jpg" alt="">
+									<img id="img_7" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">浏览详情</a>
@@ -830,11 +825,11 @@
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">大米, 65kg</a>
+										<a href="single.html" id="out_name_7"></a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">￥390.00</span>
-										<del>￥400.00</del>
+										<span class="item_price" id="out_price_7"></span>
+										<del >￥400.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
@@ -842,9 +837,10 @@
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
 												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="大米, 65kg" />
-												<input type="hidden" name="amount" value="390.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
+												<input type="hidden"  id="in_name_7" name="item_name" value="" />
+												<input type="hidden"  id="in_price_7" name="amount" value="" />
+												<input type="hidden" id="good_id_7" name="discount_amount" value="1.00" />
+												<input type="hidden" id="item_id_7" name="item_id" value="" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />
 												<input type="hidden" name="cancel_return" value=" " />
@@ -859,22 +855,20 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/mk8.jpg" alt="">
+									<img id="img_8" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">浏览详情</a>
 										</div>
 									</div>
-									<span class="product-new-top">New</span>
-
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">红豆, 50kg</a>
+										<a href="single.html" id="out_name_8"></a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">￥300.00</span>
-										<del>￥380.00</del>
+										<span class="item_price" id="out_price_8"></span>
+										<del >￥400.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
@@ -882,9 +876,10 @@
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
 												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="红豆, 50kg" />
-												<input type="hidden" name="amount" value="300.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
+												<input type="hidden"  id="in_name_8" name="item_name" value="" />
+												<input type="hidden"  id="in_price_8" name="amount" value="" />
+												<input type="hidden" id="good_id_8" name="discount_amount" value="1.00" />
+												<input type="hidden" id="item_id_8" name="item_id" value="" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />
 												<input type="hidden" name="cancel_return" value=" " />
@@ -899,22 +894,20 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/mk9.jpg" alt="">
+									<img id="img_9" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">浏览详情</a>
 										</div>
 									</div>
-									<span class="product-new-top">New</span>
-
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">小米, 68kg</a>
+										<a href="single.html" id="out_name_9"></a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">￥190</span>
-										<del>￥200.00</del>
+										<span class="item_price" id="out_price_9"></span>
+										<del >￥400.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
@@ -922,9 +915,10 @@
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
 												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="小米, 68kg" />
-												<input type="hidden" name="amount" value="190" />
-												<input type="hidden" name="discount_amount" value="1.00" />
+												<input type="hidden"  id="in_name_9" name="item_name" value="" />
+												<input type="hidden"  id="in_price_9" name="amount" value="" />
+												<input type="hidden" id="good_id_9" name="discount_amount" value="1.00" />
+												<input type="hidden" id="item_id_9" name="item_id" value="" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />
 												<input type="hidden" name="cancel_return" value=" " />
@@ -932,7 +926,6 @@
 											</fieldset>
 										</form>
 									</div>
-
 								</div>
 							</div>
 						</div>
@@ -978,24 +971,26 @@
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>
 	<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
-		paypalm.minicartk.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
+			paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
+			paypalm.minicartk.cart.on('checkout', function (evt) {
+				var items = this.items(),
+						len = items.length,
+						total = 0,
+						i;
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
+				// Count the number of each item in the cart
+				for (i = 0; i < len; i++) {
+					total += items[i].get('quantity');
+				}
+
+				if (total < 3) {
+					alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+					evt.preventDefault();
+				}
+			});
+
 	</script>
 	<!-- //cart-js -->
 
@@ -1045,7 +1040,7 @@
 					}
 				}
 			});
-
+		do_searchGoods();
 		});
 	</script>
 	<!-- //flexisel (for special offers) -->

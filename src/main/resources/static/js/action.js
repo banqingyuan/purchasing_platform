@@ -119,6 +119,7 @@
 						$("#user_ul").empty();
 						$("#user_ul").append('<li><a href="#" data-toggle="modal" data-target="#myModal6"><span class="fa fa-unlock-alt" aria-hidden="true"></span><span id="user_email_span"></span></a></li>');
 						$("#user_email_span").append(param.email);
+						do_searchOrder(0);
 					}else{
 						alert("登录失败");
 					}
@@ -144,7 +145,7 @@
 						$("#user_ul").empty();
 						$("#user_ul").append('<li><a href="#" data-toggle="modal" data-target="#myModal5" ><span class="fa fa-unlock-alt" aria-hidden="true"></span><span id="user_email_span"></span></a></li>');
 						$("#user_email_span").append(param.email);
-						do_searchOrder();
+						do_searchOrder(1);
 
 					}else{
 						alert("登录失败");
@@ -209,7 +210,31 @@
                 }
             });
         }
-        function do_searchOrder() {
+        function do_searchGoods() {
+            $.ajax({
+                url:'/searchGoods',
+                type:'GET',
+                async: false,
+                cache: false,
+                processData: false,
+                success: function (returndata) {
+                    var json = JSON.parse(returndata);
+                    for(var i=0;i<json.length;i++){
+                        $("#img_"+(i+1)).attr("src","images/"+json[i]["picture"]);
+                        $("#out_name_"+(i+1)).append(json[i]["name"]);
+                        $("#out_price_"+(i+1)).append("￥"+json[i]["price"]);
+                        $("#in_price_"+(i+1)).attr("value",json[i]["price"]);
+                        $("#in_name_"+(i+1)).attr("value",json[i]["name"]);
+                        $("#item_id_"+(i+1)).attr("value",json[i]["id"]);
+
+                    }
+                },
+                error: function (returndata) {
+
+                }
+            });
+        }
+        function do_searchOrder(tag) {
             $.ajax({
                 url: '/searchOrder',
                 type: 'GET',
@@ -217,17 +242,62 @@
                 cache: false,
                 processData: false,
                 success: function (returndata) {
-                    alert(returndata);
-                    for(var i=0;i<returndata.length;i++){
-                        var id = returndata[i].id;
-                        $('#buyer_info').append('<li>');
-                        $('#buyer_info').append(id);
-                        $('#buyer_info').append('</li>');
+                    var json = JSON.parse(returndata);
+                    //0表示供应商
+                    //1表示采购员
+                    if(tag==1){
+                        $('#buyer_info').empty();
+                        for(var i=0;i<json.length;i++){
+                            var id = json[i]["id"];
+                            var href = "javascript:do_updateOrder("+id+","+tag+")";
+                            if (json[i]["state"]=="outstanding"){
+                                var string ='<a href="'+href+'" id="'+'buyer_order_'+id+'" class="list-group-item list-group-item-warning">'+'订单编号：'+id+'</a>'
+                            }
+                            if (json[i]["state"]=="completed"){
+                                var string ='<a href="'+href+'" id="'+'buyer_order_'+id+'" class="list-group-item list-group-item-success">'+'订单编号：'+id+'</a>'
+                            }
+                            if (json[i]["state"]=="delivering"){
+                                var string ='<a href="'+href+'" id="'+'buyer_order_'+id+'" class="list-group-item list-group-item-info">'+'订单编号：'+id+'</a>'
+                            }
+                            $('#buyer_info').append(string);
+                        }
+                    }else if(tag==0){
+                        $('#supplier_info').empty();
+                        for(var i=0;i<json.length;i++){
+                            var id = json[i]["id"];
+                            var href = "javascript:do_updateOrder("+id+","+tag+")";
+                            if (json[i]["state"]=="outstanding"){
+                                var string ='<a href="'+href+'" id="'+'supplier_order_'+id+'" class="list-group-item list-group-item-warning">'+'订单编号：'+id+'</a>'
+                            }
+                            if (json[i]["state"]=="completed"){
+                                var string ='<a href="'+href+'" id="'+'supplier_order_'+id+'" class="list-group-item list-group-item-success">'+'订单编号：'+id+'</a>'
+                            }
+                            if (json[i]["state"]=="delivering"){
+                                var string ='<a href="'+href+'" id="'+'supplier_order_'+id+'" class="list-group-item list-group-item-info">'+'订单编号：'+id+'</a>'
+                            }
+                            $('#supplier_info').append(string);
+                        }
                     }
-
                 },
                 error: function (returndata) {
                     alert(returndata);
+                }
+            });
+        }
+        function do_updateOrder(id,tag) {
+            var string = '/updateOrder?id='+id;
+            var id = '#buyer_order_'+id;
+            $.ajax({
+                url:string,
+                type:'GET',
+                async:false,
+                cache:false,
+                processDate:false,
+                success:function (returndata) {
+                       do_searchOrder(tag);
+                },
+                error: function (returndata) {
+
                 }
             });
         }
