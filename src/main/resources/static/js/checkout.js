@@ -37,10 +37,10 @@ function getGoodsInfo(id,i) {
             $("#order_tbody").append(table);
         },
         error: function (returndata) {
-
         }
     });
 }
+
 function find_Out_Count() {
     var i=1;
     var count = 0;
@@ -53,15 +53,18 @@ function find_Out_Count() {
     $("#number_of_goods").append(count+"个产品")
     set_Table(count);
 }
+var order_info = {};
 function set_Table(count) {
     for(var i=1;i<=count;i++) {
         var string = "item_id_" + i;
         var id = GetQueryString(string);
+        order_info[GetQueryString("item_id_"+i)]=GetQueryString("quantity_"+i);
         getGoodsInfo(id, i);
     }
 }
 function do_createOrder(){
-    var initOrderInfo = {"expect":"2019-12-04 19:08:29","goodsMap":{1:10,2:25,9:10,10:20}}/*{id:weight}*/
+    var string = $("#expect_time").val();
+    var initOrderInfo = {"expect":string,"goodsMap":order_info};/*{id:weight}*/
     $.ajax({
         url: '/createOrder',
         type: 'POST',
